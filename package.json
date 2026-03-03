@@ -1,0 +1,36 @@
+{
+  "name": "file-tree",
+  "version": "1.0.0",
+  "description": "Beautiful ASCII directory trees. Filter, format, export. Smarter than tree command.",
+  "type": "module",
+  "bin": {
+    "file-tree": "./index.js",
+    "ftree": "./index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "developer-tools",
+    "cli",
+    "nodejs",
+    "zero-dependencies",
+    "files",
+    "tree",
+    "directory",
+    "visualization"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickCirv/file-tree.git"
+  },
+  "homepage": "https://github.com/NickCirv/file-tree#readme",
+  "bugs": {
+    "url": "https://github.com/NickCirv/file-tree/issues"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ]
+}
