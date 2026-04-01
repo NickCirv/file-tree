@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # file-tree
 
 > Beautiful directory trees. Filter, format, export. Smarter than `tree`. Zero dependencies.
