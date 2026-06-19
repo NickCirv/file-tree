@@ -1,46 +1,35 @@
-![Banner](banner.svg)
+<div align="center">
 
 # file-tree
 
-> Beautiful directory trees. Filter, format, export. Smarter than `tree`. Zero dependencies.
+**ASCII directory trees with filtering, sorting, and export — smarter than `tree`**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?labelColor=0B0A09)](LICENSE)
+![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?labelColor=0B0A09)
+![Node >=18](https://img.shields.io/badge/node-%3E%3D18-brightgreen?labelColor=0B0A09)
+
+</div>
 
 ## Install
 
 ```bash
-npx file-tree [path] [options]
+npx github:NickCirv/file-tree [path] [options]
 ```
 
 Or install globally:
 
 ```bash
-npm install -g file-tree
+npm install -g github:NickCirv/file-tree
 ```
 
-## Quick Start
-
-```
-src/
-├── components/
-│   ├── Button.tsx        2.1 KB
-│   └── Input.tsx         1.8 KB
-├── pages/
-│   └── index.tsx         4.2 KB
-└── utils/
-    ├── api.ts            3.1 KB
-    └── helpers.ts        1.2 KB
-
-2 directories, 5 files
-```
+## Usage
 
 ```bash
-ftree              # current directory
-ftree src/         # specific path
-ftree --depth 2    # limit depth
-ftree --size       # show file sizes
-ftree --count      # show summary
+ftree                                              # current directory
+ftree src/ --depth 3 --size --count               # scoped, with sizes + summary
+ftree --include "*.ts,*.tsx" --format markdown     # TypeScript files → markdown
+ftree --format json | jq '.[] | .name'            # JSON output for scripting
 ```
-
-## Options
 
 | Flag | Description | Default |
 |------|-------------|---------|
@@ -56,51 +45,10 @@ ftree --count      # show summary
 | `--output <file>` | Save output to file | stdout |
 | `--sort <by>` | Sort by: `name`, `size`, `date` | `name` |
 | `--max-files <n>` | Stop after N files | `1000` |
-| `--help` | Show help | |
-| `--version` | Show version | |
 
-## Output Formats
+## What it does
 
-### text (default)
-ANSI colored output. Cyan = directories, white = files.
-
-### json
-Structured JSON tree — great for piping to `jq`:
-```bash
-ftree --format json | jq '.[] | .name'
-```
-
-### markdown
-Wrapped in a fenced code block — paste directly into docs:
-```bash
-ftree --format markdown --output TREE.md
-```
-
-### html
-Standalone HTML page with dark theme styling:
-```bash
-ftree --format html --output tree.html
-```
-
-## Examples
-
-```bash
-# Show TypeScript files only, 3 levels deep
-ftree --include "*.ts,*.tsx" --depth 3
-
-# Full project tree with sizes and count
-ftree --ignore "node_modules,dist,.git,coverage" --size --count
-
-# Export as markdown for docs
-ftree src/ --format markdown --output docs/structure.md
-
-# JSON output for scripting
-ftree --format json --sort size | jq '.[0]'
-
-# Everything, including hidden, sorted by date
-ftree --hidden --sort date --count
-```
+Recursively walks a directory and renders the structure as an ANSI-coloured tree (cyan dirs, white files). Supports four output formats — text, JSON, Markdown, and a standalone dark-theme HTML page — so you can paste trees directly into docs or pipe them to `jq`. Glob-based `--include`/`--ignore` patterns let you filter noise without scripting, and `--sort size|date` surfaces the biggest or most recently changed files first.
 
 ---
-
-Built with Node.js · Zero dependencies · MIT License
+<sub>Zero dependencies · Node >=18 · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
